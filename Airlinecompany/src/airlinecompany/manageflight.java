@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import static javax.swing.UIManager.getString;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -71,7 +72,7 @@ public class manageflight extends javax.swing.JFrame {
 
         jLabel6.setText("DEPARTURE");
 
-        jLabel8.setText("DATE");
+        jLabel8.setText("FLIGHT_DATE");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +82,7 @@ public class manageflight extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "FLIGHT_NUM", "ORIGIN", "DESTINATION", "DATE", "ARIVAL", "DEPATURE"
+                "FLIGHT_NUM", "ORIGIN", "DESTINATION", "FLIGHT_DATE", "ARIVAL", "DEPARTURE"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -129,17 +130,24 @@ public class manageflight extends javax.swing.JFrame {
 
         SEARCH.setBackground(new java.awt.Color(204, 204, 255));
         SEARCH.setText("SEARCH");
+        SEARCH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCHActionPerformed(evt);
+            }
+        });
 
         DELETE.setBackground(new java.awt.Color(204, 204, 255));
         DELETE.setText("DELETE");
+        DELETE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DELETEActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -155,10 +163,10 @@ public class manageflight extends javax.swing.JFrame {
                                 .addGap(45, 45, 45)
                                 .addComponent(Origin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(86, 86, 86)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -195,6 +203,10 @@ public class manageflight extends javax.swing.JFrame {
                 .addGap(326, 326, 326)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,6 +284,48 @@ public class manageflight extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_INSERTActionPerformed
+
+    private void SEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCHActionPerformed
+         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st  = con.createStatement();
+            String sql = "SELECT * FROM manageflight";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ResultSet rs = ptst.executeQuery();
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            while(rs.next())
+            {
+                Object o[] = {rs.getString("FLIGHT_NUM"), rs.getString("ORIGIN"), rs.getString("DESTINATION"), rs.getDate("FLIGHT_DATE"), rs.getString("ARRIVAL"), rs.getString("DEPARTURE")};
+                dt.addRow(o);
+            }
+
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+         }
+
+    }//GEN-LAST:event_SEARCHActionPerformed
+
+    private void DELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETEActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st = con.createStatement();
+            String id = FlightNum.getText();
+            String sql = "DELETE FROM 'manageflight' WHERE id ="+id;
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data deleted successfully");
+            con.close();
+            
+        }
+        catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+         }
+        
+    }//GEN-LAST:event_DELETEActionPerformed
 
     /**
      * @param args the command line arguments
