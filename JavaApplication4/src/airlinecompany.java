@@ -7,7 +7,7 @@
  *
  * @author nasteho
  */
-public class AirlineCompany {
+public class airlinecompany {
 
     /**
      * @param args the command line arguments
