@@ -127,6 +127,11 @@ public class manageflight extends javax.swing.JFrame {
 
         UPDATE.setBackground(new java.awt.Color(204, 204, 255));
         UPDATE.setText("UPDATE");
+        UPDATE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UPDATEActionPerformed(evt);
+            }
+        });
 
         SEARCH.setBackground(new java.awt.Color(204, 204, 255));
         SEARCH.setText("SEARCH");
@@ -309,23 +314,49 @@ public class manageflight extends javax.swing.JFrame {
     }//GEN-LAST:event_SEARCHActionPerformed
 
     private void DELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETEActionPerformed
-        try {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
             Statement st = con.createStatement();
-            String id = FlightNum.getText();
-            String sql = "DELETE FROM 'manageflight' WHERE id ="+id;
+
+            String id= FlightNum.getText();
+            String sql = "DELETE FROM `manageflight` WHERE FLIGHT_NUM='"+id+"'";
             PreparedStatement ptst = con.prepareStatement(sql);
             ptst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Data deleted successfully");
+            JOptionPane.showMessageDialog(this, "Data deleted succsessfully");
             con.close();
-            
-        }
-        catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-         }
+
+            }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+            }
         
     }//GEN-LAST:event_DELETEActionPerformed
+
+    private void UPDATEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UPDATEActionPerformed
+       try{
+            
+            String id = FlightNum.getText();
+            String origin = Origin.getText();
+            String destination = Destination.getText();
+            String date = Date.getText();
+            String arrival = Arrival.getText();
+            String departure = Departure.getText();
+           
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            
+            String sql= "UPDATE `manageflight` SET `ORIGIN`='"+origin+"',`DESTINATION`='"+destination+"',`FLIGHT_DATE`='"+date+"',`ARRIVAL`='"+arrival+"', `DEPARTURE`='"+departure+"'";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.execute();
+            
+            JOptionPane.showMessageDialog(this, "Record Updated!");
+            }
+            catch(Exception e)
+            {
+            JOptionPane.showMessageDialog(this, e);
+            }
+    }//GEN-LAST:event_UPDATEActionPerformed
 
     /**
      * @param args the command line arguments
