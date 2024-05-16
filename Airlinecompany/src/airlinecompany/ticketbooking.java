@@ -4,6 +4,14 @@
  */
 package airlinecompany;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author nasteho
@@ -26,21 +34,282 @@ public class ticketbooking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        PASSENGER_ID = new javax.swing.JTextField();
+        FIRST_NAME = new javax.swing.JTextField();
+        FLIGHT_NUM = new javax.swing.JTextField();
+        GENDER = new javax.swing.JTextField();
+        PASSPORT_NUMBER = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        AMOUNT = new javax.swing.JTextField();
+        SAVE = new javax.swing.JButton();
+        RESET = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        SEARCH = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setText("TICKET BOOKING");
+
+        jLabel2.setText("PASSENGER_ID");
+
+        jLabel4.setText("FIRST_NAME");
+
+        jLabel5.setText("FLIGHT_NUM");
+
+        jLabel7.setText("GENDER");
+
+        jLabel8.setText("PASSPORT_NUMBER");
+
+        jLabel9.setText("AMOUNT");
+
+        PASSENGER_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PASSENGER_IDActionPerformed(evt);
+            }
+        });
+
+        FLIGHT_NUM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FLIGHT_NUMActionPerformed(evt);
+            }
+        });
+
+        AMOUNT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AMOUNTActionPerformed(evt);
+            }
+        });
+
+        SAVE.setBackground(new java.awt.Color(204, 204, 255));
+        SAVE.setText("SAVE");
+        SAVE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SAVEActionPerformed(evt);
+            }
+        });
+
+        RESET.setBackground(new java.awt.Color(204, 204, 255));
+        RESET.setText("RESET");
+        RESET.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RESETActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "PASSENGER_ID", "FIRST_NAME", "FLIGHT_NUM", "GENDER", "PASSPORT_NUMBER", "AMOUNT"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
+        SEARCH.setText("SEARCH");
+        SEARCH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCHActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(SAVE)
+                .addGap(50, 50, 50)
+                .addComponent(RESET)
+                .addGap(64, 64, 64)
+                .addComponent(SEARCH)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(PASSENGER_ID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel3))
+                                    .addComponent(FIRST_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(FLIGHT_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addGap(29, 29, 29))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel1))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(145, 145, 145)
+                                        .addComponent(GENDER, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(PASSPORT_NUMBER, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(AMOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PASSENGER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FIRST_NAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FLIGHT_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GENDER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PASSPORT_NUMBER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(AMOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SAVE)
+                    .addComponent(RESET)
+                    .addComponent(SEARCH))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FLIGHT_NUMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FLIGHT_NUMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FLIGHT_NUMActionPerformed
+
+    private void AMOUNTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMOUNTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AMOUNTActionPerformed
+
+    private void SAVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SAVEActionPerformed
+        try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+        String sql = "INSERT INTO ticket_booking values(?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ptst = con.prepareStatement(sql);
+        ptst.setString(1, PASSENGER_ID.getText());
+        ptst.setString(2, FIRST_NAME.getText());
+        ptst.setString(3, FLIGHT_NUM.getText());
+        ptst.setString(4, GENDER.getText());
+        ptst.setString(5, PASSPORT_NUMBER.getText());
+        ptst.setString(6, AMOUNT.getText());
+        ptst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Data inserted successfully");
+            con.close();    
+        } 
+        catch (Exception e) 
+        {
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_SAVEActionPerformed
+
+    private void RESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RESETActionPerformed
+
+PASSENGER_ID.setText("");
+FIRST_NAME.setText("");
+FLIGHT_NUM.setText("");
+GENDER.setText("");
+PASSPORT_NUMBER.setText("");
+AMOUNT.setText("");
+       
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RESETActionPerformed
+
+    private void PASSENGER_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PASSENGER_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PASSENGER_IDActionPerformed
+
+    private void SEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCHActionPerformed
+      try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st  = con.createStatement();
+            String sql = "SELECT * FROM ticket_booking";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ResultSet rs = ptst.executeQuery();
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            while(rs.next())
+            {
+                Object o[] = {rs.getString("PASSENGER_ID"),rs.getString("FIRST_NAME"),rs.getString("FLIGHT_NUM"), rs.getString("PASSPORT_NUMBER"), rs.getString("AMOUNT")};
+                dt.addRow(o);
+            }
+
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+         }           // TODO add your handling code here:
+    }//GEN-LAST:event_SEARCHActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +347,27 @@ public class ticketbooking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AMOUNT;
+    private javax.swing.JTextField FIRST_NAME;
+    private javax.swing.JTextField FLIGHT_NUM;
+    private javax.swing.JTextField GENDER;
+    private javax.swing.JTextField PASSENGER_ID;
+    private javax.swing.JTextField PASSPORT_NUMBER;
+    private javax.swing.JButton RESET;
+    private javax.swing.JButton SAVE;
+    private javax.swing.JButton SEARCH;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
