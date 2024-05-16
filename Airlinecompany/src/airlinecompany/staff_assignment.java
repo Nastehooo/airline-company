@@ -4,6 +4,14 @@
  */
 package airlinecompany;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author nasteho
@@ -26,21 +34,337 @@ public class staff_assignment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        STAFF_NUM = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        FLIGHT_NUM = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        DATE_TIME = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        ASSIGNMENT_STATUS = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        ROLE = new javax.swing.JTextField();
+        INSERT = new javax.swing.JButton();
+        UPDATE = new javax.swing.JButton();
+        DELETE = new javax.swing.JButton();
+        SEARCH = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        jButton1.setText("jButton1");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setText("STAFF ASSIGNMENT ");
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel2.setText("<--- BACK");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("STAFF_NUM");
+
+        jLabel5.setText("FLIGHT_NUM");
+
+        jLabel7.setText("DATE_TIME");
+
+        DATE_TIME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DATE_TIMEActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("ASSIGNMENT_STATUS");
+
+        jLabel10.setText("ROLE");
+
+        INSERT.setBackground(new java.awt.Color(204, 204, 255));
+        INSERT.setText("INSERT");
+        INSERT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                INSERTActionPerformed(evt);
+            }
+        });
+
+        UPDATE.setBackground(new java.awt.Color(204, 204, 255));
+        UPDATE.setText("UPDATE");
+        UPDATE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UPDATEActionPerformed(evt);
+            }
+        });
+
+        DELETE.setBackground(new java.awt.Color(204, 204, 255));
+        DELETE.setText("DELETE");
+        DELETE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DELETEActionPerformed(evt);
+            }
+        });
+
+        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
+        SEARCH.setText("SEARCH");
+        SEARCH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCHActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "STAFF_NUM", "FLIGHT_NUM", "DATE_TIME", "ASSIGNMENT_STATUS", "ROLE"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(48, 48, 48))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(STAFF_NUM)
+                                .addGap(35, 35, 35)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(FLIGHT_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addGap(36, 36, 36)
+                                .addComponent(DATE_TIME, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)))
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel10)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ASSIGNMENT_STATUS, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(ROLE, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(117, 117, 117)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(369, 369, 369)
+                                .addComponent(SEARCH)
+                                .addGap(71, 71, 71)
+                                .addComponent(DELETE)))
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(INSERT)
+                        .addGap(95, 95, 95)
+                        .addComponent(UPDATE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(STAFF_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(FLIGHT_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(DATE_TIME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ASSIGNMENT_STATUS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ROLE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(INSERT)
+                    .addComponent(UPDATE)
+                    .addComponent(DELETE)
+                    .addComponent(SEARCH))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(269, 269, 269))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DATE_TIMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DATE_TIMEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DATE_TIMEActionPerformed
+
+    private void INSERTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INSERTActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            String sql = "INSERT INTO staff_assignment values(?, ?, ?, ?,?)";
+
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.setString(1, STAFF_NUM.getText());
+            ptst.setString(2, FLIGHT_NUM.getText());
+            ptst.setString(3, DATE_TIME.getText());
+            ptst.setString(4, ASSIGNMENT_STATUS.getText());
+            ptst.setString(5,  ROLE.getText());
+        
+            ptst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data inserted successfully");
+                con.close();
+            } catch (Exception e) {
+            }        // TODO add your handling code here:
+    }//GEN-LAST:event_INSERTActionPerformed
+
+    private void DELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETEActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st = con.createStatement();
+
+            String id= STAFF_NUM.getText();
+            String sql = "DELETE FROM `staff_assignment` WHERE STAFF_NUM='"+id+"'";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data deleted succsessfully");
+            con.close();
+
+            }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+            }        // TODO add your handling code here:
+    }//GEN-LAST:event_DELETEActionPerformed
+
+    private void SEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCHActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st  = con.createStatement();
+            String sql = "SELECT * FROM staff_assignment";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ResultSet rs = ptst.executeQuery();
+            DefaultTableModel dt = (DefaultTableModel)jTable2.getModel();
+            dt.setRowCount(0);
+            while(rs.next())
+            {
+                Object o[] = {rs.getString("STAFF_NUM"), rs.getString("FLIGHT_NUM"), rs.getString("DATE_TIME"), rs.getString("ASSIGNMENT_STATUS"), rs.getString("ROLE")};
+                dt.addRow(o);
+            }
+
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+         }
+    }//GEN-LAST:event_SEARCHActionPerformed
+
+    private void UPDATEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UPDATEActionPerformed
+        try{
+            
+            String id = STAFF_NUM.getText();
+            String flight = FLIGHT_NUM.getText();
+            String datetime = DATE_TIME.getText();
+            String assignment = ASSIGNMENT_STATUS.getText();
+            String role = ROLE.getText();
+         
+           
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            
+            String sql= "UPDATE `staff_assignment` SET `FLIGHT_NUM`='"+flight+"',`DATE_TIME`='"+datetime+"',`ASSIGNMENT_STATUS`='"+assignment+"',`ROLE`='"+role+"'";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.execute();
+            
+            JOptionPane.showMessageDialog(this, "Record Updated!");
+            }
+            catch(Exception e)
+            {
+            JOptionPane.showMessageDialog(this, e);
+            }        // TODO add your handling code here:
+    }//GEN-LAST:event_UPDATEActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        dashboard obj =new dashboard();
+        obj.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +402,30 @@ public class staff_assignment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ASSIGNMENT_STATUS;
+    private javax.swing.JTextField DATE_TIME;
+    private javax.swing.JButton DELETE;
+    private javax.swing.JTextField FLIGHT_NUM;
+    private javax.swing.JButton INSERT;
+    private javax.swing.JTextField ROLE;
+    private javax.swing.JButton SEARCH;
+    private javax.swing.JTextField STAFF_NUM;
+    private javax.swing.JButton UPDATE;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

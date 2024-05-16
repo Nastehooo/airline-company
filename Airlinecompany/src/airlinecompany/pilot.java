@@ -4,6 +4,15 @@
  */
 package airlinecompany;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author nasteho
@@ -26,21 +35,323 @@ public class pilot extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        INSERT = new javax.swing.JButton();
+        DELETE = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        PILOT_ID = new javax.swing.JTextField();
+        STAFF_NUM = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        PILOT_RATING = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        INSERT1 = new javax.swing.JButton();
+        UPDATE = new javax.swing.JButton();
+        SEARCH = new javax.swing.JButton();
+        DELETE1 = new javax.swing.JButton();
+
+        INSERT.setBackground(new java.awt.Color(204, 204, 255));
+        INSERT.setText("INSERT");
+        INSERT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                INSERTActionPerformed(evt);
+            }
+        });
+
+        DELETE.setBackground(new java.awt.Color(204, 204, 255));
+        DELETE.setText("DELETE");
+        DELETE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DELETEActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("<--BACK");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        PILOT_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PILOT_IDActionPerformed(evt);
+            }
+        });
+
+        STAFF_NUM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STAFF_NUMActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("PILOT_ID");
+
+        jLabel3.setText("STAFF_NUM");
+
+        jLabel4.setText("PILOT_RATING");
+
+        PILOT_RATING.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PILOT_RATINGActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel5.setText("MANAGE PILOT");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "PILOT_ID", "STAFF_NUM", "PILOT_RATING"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        INSERT1.setBackground(new java.awt.Color(204, 204, 255));
+        INSERT1.setText("INSERT");
+        INSERT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                INSERT1ActionPerformed(evt);
+            }
+        });
+
+        UPDATE.setBackground(new java.awt.Color(204, 204, 255));
+        UPDATE.setText("UPDATE");
+        UPDATE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UPDATEActionPerformed(evt);
+            }
+        });
+
+        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
+        SEARCH.setText("SEARCH");
+        SEARCH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SEARCHActionPerformed(evt);
+            }
+        });
+
+        DELETE1.setBackground(new java.awt.Color(204, 204, 255));
+        DELETE1.setText("DELETE");
+        DELETE1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DELETE1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(PILOT_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel2)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UPDATE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(SEARCH)
+                                .addGap(143, 143, 143))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(203, 203, 203)
+                                .addComponent(DELETE1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(STAFF_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PILOT_RATING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(138, 138, 138))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(INSERT1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PILOT_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PILOT_RATING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(STAFF_NUM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(INSERT1)
+                    .addComponent(UPDATE)
+                    .addComponent(SEARCH)
+                    .addComponent(DELETE1))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PILOT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PILOT_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PILOT_IDActionPerformed
+
+    private void PILOT_RATINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PILOT_RATINGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PILOT_RATINGActionPerformed
+
+    private void STAFF_NUMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STAFF_NUMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_STAFF_NUMActionPerformed
+
+    private void INSERTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INSERTActionPerformed
+        
+    }//GEN-LAST:event_INSERTActionPerformed
+
+    private void INSERT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INSERT1ActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            String sql = "INSERT INTO managepilot values(?, ?, ?)";
+
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.setString(1, PILOT_ID.getText());
+            ptst.setString(2, STAFF_NUM.getText());
+            ptst.setString(3, PILOT_RATING.getText());
+            ptst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data inserted successfully");
+            con.close();
+        } catch (Exception e) {
+        }
+
+    }//GEN-LAST:event_INSERT1ActionPerformed
+
+    private void UPDATEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UPDATEActionPerformed
+        try{
+
+            String id = PILOT_ID.getText();
+            String staff = STAFF_NUM.getText();
+            String pilotrating = PILOT_RATING.getText();
+          
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+
+            String sql= "UPDATE `managepilot` SET `STAFF_NUM`='"+staff+"',`PILOT_RATING`='"+pilotrating+"'";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.execute();
+
+            JOptionPane.showMessageDialog(this, "Record Updated!");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_UPDATEActionPerformed
+
+    private void SEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SEARCHActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st  = con.createStatement();
+            String sql = "SELECT * FROM managepilot";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ResultSet rs = ptst.executeQuery();
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            while(rs.next())
+            {
+                Object o[] = {rs.getString("PILOT_ID"), rs.getString("STAFF_NUM"), rs.getString("PILOT_RATING")};
+                dt.addRow(o);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_SEARCHActionPerformed
+
+    private void DELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETEActionPerformed
+       
+    }//GEN-LAST:event_DELETEActionPerformed
+
+    private void DELETE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETE1ActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345");
+            Statement st = con.createStatement();
+
+            String id= PILOT_ID.getText();
+            String sql = "DELETE FROM `managepilot` WHERE PILOT_ID='"+id+"'";
+            PreparedStatement ptst = con.prepareStatement(sql);
+            ptst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data deleted succsessfully");
+            con.close();
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }//GEN-LAST:event_DELETE1ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        dashboard obj =new dashboard();
+        obj.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +389,22 @@ public class pilot extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DELETE;
+    private javax.swing.JButton DELETE1;
+    private javax.swing.JButton INSERT;
+    private javax.swing.JButton INSERT1;
+    private javax.swing.JTextField PILOT_ID;
+    private javax.swing.JTextField PILOT_RATING;
+    private javax.swing.JButton SEARCH;
+    private javax.swing.JTextField STAFF_NUM;
+    private javax.swing.JButton UPDATE;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
