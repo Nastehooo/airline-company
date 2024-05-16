@@ -143,37 +143,60 @@ public class loginpage extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-       try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        String un = user.getText();
-        String pw = pass.getText();
+   
+         try {
+         Class.forName("com.mysql.cj.jdbc.Driver");
+         String un = user.getText();
+         String pw = pass.getText();
 
-           try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345")) {
-               Statement st = conn.createStatement();
-               String sql = "SELECT * FROM login";
-               ResultSet rs = st.executeQuery(sql);
-               boolean loggedIn = false;
-               while (rs.next()) {
-                   String username = rs.getString("username");
-                   String password = rs.getString("password");
-                   
-                   if (un.equals(username) && pw.equals(password)) {
-                       loggedIn = true;
-                       break;
-                   }
-               }      if (loggedIn) {
-                   new dashboard().setVisible(true);
-               } else {
-                   JOptionPane.showMessageDialog(this, "Username or Password is incorrect!");
-               }
-               // Close the connection when done
-           }
-    } 
-     catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error while establishing connection: " + e.getMessage());
-    }
- 
+         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline", "root", "root12345")) {
+             Statement st = conn.createStatement();
+             String sql = "SELECT * FROM admin_login";
+             ResultSet rs = st.executeQuery(sql);
+             boolean adminLoggedIn = false;
+             while (rs.next()) {
+                 String adminUsername = rs.getString("admin_username");
+                 String adminPassword = rs.getString("admin_password");
+
+                 if (un.equals(adminUsername) && pw.equals(adminPassword)) {
+                     adminLoggedIn = true;
+                     break;
+                 }
+             }
+
+             if (adminLoggedIn) {
+                 // Open admin dashboard or perform admin-specific tasks
+                 // For example:
+                 new StaffDashboard().setVisible(true);
+             } else {
+                 // If not an admin, check against staff login
+                 sql = "SELECT * FROM staff_login";
+                 rs = st.executeQuery(sql);
+                 boolean staffLoggedIn = false;
+                 while (rs.next()) {
+                     String staffUsername = rs.getString("staff_username");
+                     String staffPassword = rs.getString("staff_password");
+
+                     if (un.equals(staffUsername) && pw.equals(staffPassword)) {
+                         staffLoggedIn = true;
+                         break;
+                     }
+                 }
+
+                 if (staffLoggedIn) {
+                     // Open staff dashboard or perform staff-specific tasks
+                     // For example:
+                     new StaffDashboard().setVisible(true);
+                 } else {
+                     JOptionPane.showMessageDialog(this, "Username or Password is incorrect!");
+                 }
+             }
+         }
+     }
+     catch (Exception e) 
+     {
+         JOptionPane.showMessageDialog(this, "Error while establishing connection: " + e.getMessage());
+     } 
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
