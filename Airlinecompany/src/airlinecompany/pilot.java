@@ -121,7 +121,6 @@ public class pilot extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        INSERT1.setBackground(new java.awt.Color(204, 204, 255));
         INSERT1.setText("INSERT");
         INSERT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +128,6 @@ public class pilot extends javax.swing.JFrame {
             }
         });
 
-        UPDATE.setBackground(new java.awt.Color(204, 204, 255));
         UPDATE.setText("UPDATE");
         UPDATE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +135,6 @@ public class pilot extends javax.swing.JFrame {
             }
         });
 
-        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
         SEARCH.setText("SEARCH");
         SEARCH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +142,6 @@ public class pilot extends javax.swing.JFrame {
             }
         });
 
-        DELETE1.setBackground(new java.awt.Color(204, 204, 255));
         DELETE1.setText("DELETE");
         DELETE1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

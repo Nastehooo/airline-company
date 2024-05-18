@@ -95,7 +95,7 @@ public class ticketbooking extends javax.swing.JFrame {
             }
         });
 
-        SAVE.setBackground(new java.awt.Color(204, 204, 255));
+        SAVE.setBackground(new java.awt.Color(153, 0, 153));
         SAVE.setText("SAVE");
         SAVE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class ticketbooking extends javax.swing.JFrame {
             }
         });
 
-        RESET.setBackground(new java.awt.Color(204, 204, 255));
+        RESET.setBackground(new java.awt.Color(153, 0, 153));
         RESET.setText("RESET");
         RESET.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class ticketbooking extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
+        SEARCH.setBackground(new java.awt.Color(153, 0, 153));
         SEARCH.setText("SEARCH");
         SEARCH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

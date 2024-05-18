@@ -99,7 +99,7 @@ public class cities extends javax.swing.JFrame {
 
         jLabel8.setText("STOP_ORDER");
 
-        INSERT.setBackground(new java.awt.Color(204, 204, 255));
+        INSERT.setBackground(new java.awt.Color(204, 204, 204));
         INSERT.setText("INSERT");
         INSERT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +107,7 @@ public class cities extends javax.swing.JFrame {
             }
         });
 
-        UPDATE.setBackground(new java.awt.Color(204, 204, 255));
+        UPDATE.setBackground(new java.awt.Color(204, 204, 204));
         UPDATE.setText("UPDATE");
         UPDATE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +115,7 @@ public class cities extends javax.swing.JFrame {
             }
         });
 
-        SEARCH.setBackground(new java.awt.Color(204, 204, 255));
+        SEARCH.setBackground(new java.awt.Color(204, 204, 204));
         SEARCH.setText("SEARCH");
         SEARCH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class cities extends javax.swing.JFrame {
             }
         });
 
-        DELETE.setBackground(new java.awt.Color(204, 204, 255));
+        DELETE.setBackground(new java.awt.Color(204, 204, 204));
         DELETE.setText("DELETE");
         DELETE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

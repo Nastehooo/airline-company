@@ -111,7 +111,7 @@ public class managestaff extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel1.setText("Manage Staff");
 
-        jButton10.setBackground(new java.awt.Color(204, 204, 255));
+        jButton10.setBackground(new java.awt.Color(255, 153, 51));
         jButton10.setText("Pilot's Type Rating");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class managestaff extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(204, 204, 255));
+        jButton9.setBackground(new java.awt.Color(255, 153, 51));
         jButton9.setText("Staff's Assignment");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +139,7 @@ public class managestaff extends javax.swing.JFrame {
 
         jLabel4.setText("SURNAME");
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 255));
+        jButton5.setBackground(new java.awt.Color(255, 153, 51));
         jButton5.setText("INSERT");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +147,7 @@ public class managestaff extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(204, 204, 255));
+        jButton8.setBackground(new java.awt.Color(255, 153, 51));
         jButton8.setText("DELETE");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +155,7 @@ public class managestaff extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(204, 204, 255));
+        jButton7.setBackground(new java.awt.Color(255, 153, 51));
         jButton7.setText("SEARCH");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +163,7 @@ public class managestaff extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(204, 204, 255));
+        jButton6.setBackground(new java.awt.Color(255, 153, 51));
         jButton6.setText("UPDATE");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

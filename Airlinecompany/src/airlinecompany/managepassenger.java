@@ -101,7 +101,7 @@ public class managepassenger extends javax.swing.JFrame {
 
         FlightNum.setText("FLIGHT_NUM");
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 255));
+        jButton4.setBackground(new java.awt.Color(204, 255, 204));
         jButton4.setText("DELETE");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +158,7 @@ public class managepassenger extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 255));
+        jButton5.setBackground(new java.awt.Color(204, 255, 204));
         jButton5.setText("Flight_Information");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
