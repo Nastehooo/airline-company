@@ -9,12 +9,12 @@ package airlinecompany;
  * @author nasteho
  */
 public class Airlinecompany {
-
-    /**
-     * @param args the command line arguments
-     */
+     
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Create an instance of the loginpage class
+        loginpage login = new loginpage();
+        
+        // Make the login page visible
+        login.setVisible(true);
     }
-    
 }
